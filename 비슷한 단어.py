@@ -1,22 +1,17 @@
-from collections import Counter
-
 n = int(input())
-compare = input()
-le_com = len(compare)
-set_c = set(compare)
+compare = list(input())
 re = 0
 for i in range(n-1):
-    s = list(input())
-    if not -1 <= le_com - len(s) <= 1:
-        continue
-    c = Counter(s)
-    set_s = set(s) - set_c
-    if len(set_s) > 1:
-        continue
-    if not set_s:
-        re += 1
-        continue
-    set_s = list(set_s)
-    if c[set_s[0]] == 1:
+    tar = compare.copy()
+    word = input()
+
+    cnt = 0
+    for w in word:
+        if w in tar:
+            tar.remove(w)
+        else:
+            cnt += 1
+
+    if cnt < 2 and len(tar) < 2:
         re += 1
 print(re)

@@ -37,6 +37,8 @@ int_bout = real_n1 + real_n2
 print(int_bout)
 str_bout = ''
 for idx, i in enumerate(str(int_bout)):
+    if i == '0':
+        continue
     str_bout += (i + (len(str(int_bout)) - idx - 1) * '0')
     str_bout += ' '
 num_to_rome = {

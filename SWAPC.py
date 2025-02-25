@@ -1,24 +1,17 @@
 n = int(input())
-s = input()
-re = []
-pass_ = set()
-for j, i in enumerate(s):
-    if i != 'P' and i != 'C' or len(re) == 0:
-        re.append(i)
-    else:
-        if j not in pass_:
-            if re[-1] == 'P' and i == 'C':
-                pass_.add(j + 1)
-                re.pop()
-                re.append('C')
-                re.append('P')
-            elif re[-1] == 'C' and i == 'P':
-                pass_.add(j+1)
-                re.pop()
-                re.append('P')
-                re.append('C')
-            else:
-                re.append(i)
-        else:
-            re.append(i)
-print(''.join(re))
+s = list(input())
+count = min(s.count('P'), s.count('C'))
+pIndex = []
+cIndex = []
+
+for i in range(n):
+    if s[i] == 'P':
+        pIndex.append(i)
+    elif s[i] == 'C':
+        cIndex.append(i)
+
+for i in range(count):
+    p_idx = pIndex[i]
+    c_idx = cIndex[i]
+    s[p_idx], s[c_idx] = s[c_idx], s[p_idx]
+print(''.join(s))
